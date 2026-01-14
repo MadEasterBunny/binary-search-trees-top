@@ -8,4 +8,6 @@ test.insert(testRoot, 555);
 
 test.delete(testRoot, 555);
 
+console.log(test.find(testRoot, 1));
+
 prettyPrint(testRoot);

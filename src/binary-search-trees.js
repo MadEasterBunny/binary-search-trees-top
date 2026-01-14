@@ -71,6 +71,22 @@ export class Tree {
         }
         return root;
     }
+
+    find(root, value) {
+        let curr = root;
+
+        while(curr !== null) {
+            if(curr.data === value) return curr;
+
+            if(curr.data > value) {
+                curr = curr.left;
+            } else {
+                curr = curr.right;
+            }
+        }
+
+        return null;
+    }
 }
 
 export const prettyPrint = (node, prefix = '', isLeft = true) => {

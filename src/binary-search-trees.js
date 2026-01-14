@@ -29,6 +29,18 @@ export class Tree {
 
         return buildTreeRec(sortedArr, 0, sortedArr.length - 1);        
     }
+
+    insert(root, value) {
+        if(root === null) return new Node(value);
+
+        if(value < root.data) {
+            root.left = this.insert(root.left, value);
+        } else {
+            root.right = this.insert(root.right, value);
+        }
+
+        return root;
+    }
 }
 
 export const prettyPrint = (node, prefix = '', isLeft = true) => {

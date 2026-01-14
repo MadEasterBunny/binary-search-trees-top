@@ -10,7 +10,7 @@ test.delete(testRoot, 555);
 
 console.log(test.find(testRoot, 1));
 
-test.levelOrderForEach((node) => {
+test.postOrderForEach((node) => {
     console.log(`Processing node: ${node.data}`);
 });
 

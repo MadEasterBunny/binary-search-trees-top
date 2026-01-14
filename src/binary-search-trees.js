@@ -102,6 +102,41 @@ export class Tree {
             if(curr.right !== null) queue.push(curr.right);
         }
     }
+
+    preOrderForEach(callback, node = this.root) {
+        if(typeof callback !== "function") throw new Error("A callback is required");
+
+        if(node === null) return;
+
+        callback(node);
+        this.preOrderForEach(callback, node.left);
+        this.preOrderForEach(callback, node.right);
+    }
+
+    inOrderForEach(callback, node = this.root) {
+        if(typeof callback !== "function") throw new Error("A callback is required");
+
+        if(this.root === null) return;
+
+        if(node === null) return;
+
+        this.preOrderForEach(callback, node.left);
+        callback(node);
+        this.preOrderForEach(callback, node.right);
+
+    }
+
+    postOrderForEach(callback, node = this.root) {
+        if(typeof callback !== "function") throw new Error("A callback is required");
+
+        if(this.root === null) return;
+
+        if(node === null) return;
+
+        this.preOrderForEach(callback, node.left);
+        this.preOrderForEach(callback, node.right);
+        callback(node);
+    }
 }
 
 export const prettyPrint = (node, prefix = '', isLeft = true) => {

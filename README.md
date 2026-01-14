@@ -1,3 +1,3 @@
-# webpack-template-top
+# binary-search-trees-top
 
-A template for sites created using webpack through The Odin Project
+A binary search tree created through The Odin Project

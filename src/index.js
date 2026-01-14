@@ -8,7 +8,7 @@ test.insert(testRoot, 555);
 
 test.delete(testRoot, 555);
 
-console.log(test.find(testRoot, 1));
+console.log(test.depth(7));
 
 test.postOrderForEach((node) => {
     console.log(`Processing node: ${node.data}`);

@@ -137,6 +137,39 @@ export class Tree {
         this.preOrderForEach(callback, node.right);
         callback(node);
     }
+
+    height(value) {
+        const node = this.find(this.root, value);
+        if(!node) return null;
+
+        const getHeight = (currNode) => {
+            if(currNode === null) return -1;
+
+            const leftHeight = getHeight(currNode.left);
+            const rightHeight = getHeight(currNode.right);
+
+            return Math.max(leftHeight, rightHeight) + 1;
+        };
+
+        return getHeight(node);
+    }
+
+    depth(value) {
+        let curr = this.root;
+        let count = 0;
+
+        while(curr !== null) {
+            if(curr.data === value) return count;
+            count++;
+            if(value < curr.data) {
+                curr = curr.left;
+            } else {
+                curr = curr.right;
+            }
+        }
+
+        return null;
+    }
 }
 
 export const prettyPrint = (node, prefix = '', isLeft = true) => {

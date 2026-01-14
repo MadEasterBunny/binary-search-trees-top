@@ -6,4 +6,6 @@ const testRoot = test.root;
 
 test.insert(testRoot, 555);
 
+test.delete(testRoot, 555);
+
 prettyPrint(testRoot);

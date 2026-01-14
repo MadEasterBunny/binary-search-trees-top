@@ -41,6 +41,36 @@ export class Tree {
 
         return root;
     }
+
+    delete(root, value) {
+        if(root === null) return root;
+        
+        if(root.data > value) {
+            root.left = this.delete(root.left, value);
+        } else if(root.data < value) {
+            root.right = this.delete(root.right, value);
+        } else {
+            if(root.left === null) {
+                return root.right;
+            }
+            if(root.right === null) {
+                return root.left;
+            }
+            
+            const getSuccessor = (curr) => {
+                curr = curr.right;
+                while(curr !== null && curr.left !== null) {
+                    curr = curr.left;
+                }
+                return curr;
+            }
+
+            const succ = getSuccessor(root);
+            root.data = succ.data;
+            root.right = this.delete(root.right, succ.data);
+        }
+        return root;
+    }
 }
 
 export const prettyPrint = (node, prefix = '', isLeft = true) => {
